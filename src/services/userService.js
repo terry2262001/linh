@@ -24,13 +24,13 @@ const profileUser = (access_token) => {
   //   Authorization: `Bearer ${access_token}`,
   // };
   return axios.get(
-    "https://bansachweb.vercel.app/v1/api/profile",
+    "https://bansachweb.vercel.app/v1/api/profile"
     // {
     //   headers,
     // },
-    {
-      withCredentials: true,
-    }
+    // {
+    //   withCredentials: true,
+    // }
   );
 };
 
