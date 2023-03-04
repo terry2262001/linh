@@ -2,7 +2,7 @@ import axios from "axios";
 
 // import axios from "../config/axios";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  "https://bansachweb.vercel.app/v1/api/login"; // set CORS header
+  "https://bansachweb.vercel.app"; // set CORS header
 
 const loginService = (username, password) => {
   return axios.post(
@@ -14,7 +14,7 @@ const loginService = (username, password) => {
     {
       withCredentials: true,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://bansachweb.vercel.app",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       },
@@ -35,7 +35,7 @@ const profileUser = (access_token) => {
     {
       withCredentials: true,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://bansachweb.vercel.app",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       },
@@ -63,7 +63,7 @@ const registerService = ({
     {
       withCredentials: true,
       headers: {
-        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Origin": "https://bansachweb.vercel.app",
         "Access-Control-Allow-Headers":
           "Origin, X-Requested-With, Content-Type, Accept",
       },
