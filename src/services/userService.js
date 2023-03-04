@@ -11,10 +11,10 @@ const loginService = (username, password) => {
     {
       username,
       password,
-    },
-    {
-      withCredentials: true,
     }
+    // {
+    //   withCredentials: true,
+    // }
   );
 };
 
@@ -50,10 +50,10 @@ const registerService = ({
       phone_number,
       email,
       password,
-    },
-    {
-      withCredentials: true,
     }
+    // {
+    //   withCredentials: true,
+    // }
   );
 };
 export { loginService, profileUser, registerService };
