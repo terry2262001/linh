@@ -1,3 +1,4 @@
+import Button from "components/button/Button";
 import Bag from "components/icon/Bag";
 import Heart from "components/icon/Heart";
 import Nav from "components/icon/Nav";
@@ -7,9 +8,15 @@ import User from "components/icon/User";
 import InputSearch from "components/input/InputSearch";
 import LogoBookWorm from "components/logo/LogoBookWorm";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setProfile } from "redux/slice/userSlice";
+import Cookies from "universal-cookie";
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const cookies = new Cookies();
+  const { profile } = useSelector((state) => state.user);
   const listHeader = [
     {
       id: 1,
@@ -42,6 +49,11 @@ const Header = () => {
       url: "/",
     },
   ];
+  const handleLogout = () => {
+    cookies.remove("jwt");
+    dispatch(setProfile(""));
+    navigate("/login");
+  };
   return (
     <header>
       <div className="py-2 border-b md:py-3">
@@ -58,8 +70,15 @@ const Header = () => {
           </div>
           <div className="flex items-center justify-center gap-x-7">
             <Heart width={20} height={20}></Heart>
-            <User width={20} height={20}></User>
             <Bag width={20} height={20}></Bag>
+            {profile ? (
+              <>
+                {/* <User width={20} height={20}></User> */}
+                <Button onClick={() => handleLogout()}>Logout</Button>
+              </>
+            ) : (
+              <Button onClick={() => navigate("/login")}>Login</Button>
+            )}
           </div>
         </div>
       </div>

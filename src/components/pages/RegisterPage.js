@@ -5,6 +5,7 @@ import LayoutSign from "components/layout/LayoutSign";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { registerService } from "services/userService";
 
 const RegisterPage = () => {
   const naviagte = useNavigate();
@@ -23,23 +24,23 @@ const RegisterPage = () => {
     // },
     // resolver: yupResolver(schema),
   });
-  const handleLogin = (value) => {
-    console.log("🚀 ~ file: loginPage.js:22 ~ handleLogin ~ value", value);
+  const handleReigster = async (value) => {
+    const res = await registerService(value);
+    console.log("🚀 ~ file: RegisterPage.js:29 ~ handleReigster ~ res:", res);
   };
   return (
     <LayoutSign>
       <form
-        className="bg-white p-5 shadow-xl rounded w-full"
-        onSubmit={handleSubmit(handleLogin)}
+        className="w-full p-5 bg-white rounded shadow-xl"
+        onSubmit={handleSubmit(handleReigster)}
       >
         <div className="mb-6">
-          <Label className={"mb-2"} name="email">
-            Email
+          <Label className={"mb-2"} name="full_name">
+            Full name
           </Label>
           <Input
-            name={"email"}
-            type="email"
-            placeholder={"Please enter your email"}
+            name={"full_name"}
+            placeholder={"Enter full name..."}
             control={control}
           ></Input>
         </div>
@@ -66,21 +67,21 @@ const RegisterPage = () => {
         </div>
         <div className="grid grid-cols-2 gap-x-2">
           <div className="mb-6">
-            <Label className={"mb-2"} name="name">
-              Name
+            <Label className={"mb-2"} name="email">
+              Email
             </Label>
             <Input
-              name={"name"}
-              placeholder={"Enter name..."}
+              name={"email"}
+              placeholder={"Enter email..."}
               control={control}
             ></Input>
           </div>
           <div className="mb-6">
-            <Label className={"mb-2"} name="phone">
+            <Label className={"mb-2"} name="phone_number">
               Phone
             </Label>
             <Input
-              name={"phone"}
+              name={"phone_number"}
               placeholder={"Enter phone..."}
               control={control}
             ></Input>
@@ -89,7 +90,7 @@ const RegisterPage = () => {
         <Button className={"w-full"} type="submit">
           Sign up
         </Button>
-        <p className="font-medium cursor-pointer text-sm text-primary hover:text-red-800 text-center transition-all py-4 border-b"></p>
+        <p className="py-4 text-sm font-medium text-center transition-all border-b cursor-pointer text-primary hover:text-red-800"></p>
         <p className="text-center">
           <Button
             className={"my-5"}

@@ -7,7 +7,7 @@ const CategoryPage = () => {
     <>
       <div className="container flex justify-between gap-x-5">
         <SidebarCategory className="mt-14"></SidebarCategory>
-        <div className="mt-14">
+        <div className="mt-14 max-w-[1000px]">
           <div className="flex items-center justify-between mb-10">
             <p>Showing all 20 results</p>
             <p>View all</p>
