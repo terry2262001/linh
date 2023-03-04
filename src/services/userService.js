@@ -19,15 +19,15 @@ const loginService = (username, password) => {
 };
 
 const profileUser = (access_token) => {
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${access_token}`,
-  };
+  // const headers = {
+  //   "Content-Type": "application/json",
+  //   Authorization: `Bearer ${access_token}`,
+  // };
   return axios.get(
     "https://bansachweb.vercel.app/v1/api/profile",
-    {
-      headers,
-    },
+    // {
+    //   headers,
+    // },
     {
       withCredentials: true,
     }
