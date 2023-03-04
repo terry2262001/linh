@@ -11,7 +11,14 @@ const loginService = (username, password) => {
       username,
       password,
     },
-    { withCredentials: true }
+    {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      },
+    }
   );
 };
 
@@ -25,7 +32,14 @@ const profileUser = (access_token) => {
     {
       headers,
     },
-    { withCredentials: true }
+    {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      },
+    }
   );
 };
 
@@ -46,7 +60,14 @@ const registerService = ({
       email,
       password,
     },
-    { withCredentials: true }
+    {
+      withCredentials: true,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type, Accept",
+      },
+    }
   );
 };
 export { loginService, profileUser, registerService };
