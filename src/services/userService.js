@@ -3,7 +3,7 @@ import axios from "axios";
 // import axios from "../config/axios";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  "https://bookstore-ten-gamma.vercel.app/"; // set CORS header
+  "https://bookstore-ten-gamma.vercel.app"; // set CORS header
 
 const loginService = (username, password) => {
   return axios.post(
