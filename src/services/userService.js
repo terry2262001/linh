@@ -1,8 +1,7 @@
 import axios from "axios";
 
 // import axios from "../config/axios";
-axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  "http://localhost:3000"; // set CORS header
+axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"; // set CORS header
 
 const loginService = (username, password) => {
   return axios.post(
