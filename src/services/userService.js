@@ -5,6 +5,8 @@ import axios from "axios";
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
   "https://bansachweb.vercel.app"; // set CORS header
 
+axios.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
+
 const loginService = (username, password) => {
   return axios.post(
     `https://bansachweb.vercel.app/v1/api/login`,
