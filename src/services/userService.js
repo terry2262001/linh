@@ -13,7 +13,7 @@ const loginService = (username, password) => {
       password,
     },
     {
-      withCredentials: true,
+      withCredentials: "include",
     }
   );
 };
@@ -24,13 +24,13 @@ const profileUser = (access_token) => {
   //   Authorization: `Bearer ${access_token}`,
   // };
   return axios.get(
-    "https://bansachweb.vercel.app/v1/api/profile"
+    "https://bansachweb.vercel.app/v1/api/profile",
     // {
     //   headers,
     // },
-    // {
-    //   withCredentials: true,
-    // }
+    {
+      withCredentials: "include",
+    }
   );
 };
 
@@ -50,10 +50,10 @@ const registerService = ({
       phone_number,
       email,
       password,
+    },
+    {
+      withCredentials: "include",
     }
-    // {
-    //   withCredentials: true,
-    // }
   );
 };
 export { loginService, profileUser, registerService };
