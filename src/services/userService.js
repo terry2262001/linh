@@ -11,10 +11,10 @@ const loginService = (username, password) => {
     {
       username,
       password,
+    },
+    {
+      withCredentials: true,
     }
-    // {
-    //   withCredentials: true,
-    // }
   );
 };
 
