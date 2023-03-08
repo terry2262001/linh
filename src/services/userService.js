@@ -2,7 +2,8 @@ import axios from "axios";
 
 // import axios from "../config/axios";
 
-axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"; // set CORS header
+axios.defaults.headers.common["Access-Control-Allow-Origin"] =
+  "https://bansachweb.vercel.app"; // set CORS header
 
 axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "include";
 
@@ -12,10 +13,10 @@ const loginService = (username, password) => {
     {
       username,
       password,
-    },
-    {
-      withCredentials: "include",
     }
+    // {
+    //   withCredentials: "include",
+    // }
   );
 };
 
@@ -25,13 +26,13 @@ const profileUser = (access_token) => {
   //   Authorization: `Bearer ${access_token}`,
   // };
   return axios.get(
-    "https://bansachweb.vercel.app/v1/api/profile",
+    "https://bansachweb.vercel.app/v1/api/profile"
     // {
     //   headers,
     // },
-    {
-      withCredentials: "include",
-    }
+    // {
+    //   withCredentials: "include",
+    // }
   );
 };
 
@@ -51,10 +52,10 @@ const registerService = ({
       phone_number,
       email,
       password,
-    },
-    {
-      withCredentials: "include",
     }
+    // {
+    //   withCredentials: "include",
+    // }
   );
 };
 export { loginService, profileUser, registerService };
