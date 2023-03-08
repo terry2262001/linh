@@ -2,14 +2,13 @@ import axios from "axios";
 
 // import axios from "../config/axios";
 
-axios.defaults.headers.common["Access-Control-Allow-Origin"] =
-  "https://bansachweb.vercel.app"; // set CORS header
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"; // set CORS header
 
-axios.defaults.headers.common["Access-Control-Allow-Credentials"] = true;
+// axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "include";
 
 const loginService = (username, password) => {
   return axios.post(
-    `https://bansachweb.vercel.app/v1/api/login`,
+    `http://localhost:8080/v1/api/login`,
     {
       username,
       password,
@@ -21,15 +20,16 @@ const loginService = (username, password) => {
 };
 
 const profileUser = (access_token) => {
-  // const headers = {
-  //   "Content-Type": "application/json",
-  //   Authorization: `Bearer ${access_token}`,
-  // };
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${access_token}`,
+  };
   return axios.get(
-    "https://bansachweb.vercel.app/v1/api/profile"
-    // {
-    //   headers,
-    // },
+    "http://localhost:8080/v1/api/profile",
+    {
+      headers,
+      // withCredentials: true,
+    }
     // {
     //   withCredentials: "include",
     // }
@@ -45,7 +45,7 @@ const registerService = ({
   password,
 }) => {
   return axios.post(
-    `https://bansachweb.vercel.app/v1/api/register`,
+    `http://localhost:8080/v1/api/register`,
     {
       full_name,
       address,
