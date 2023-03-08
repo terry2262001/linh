@@ -8,7 +8,7 @@ import axios from "axios";
 
 const loginService = (username, password) => {
   return axios.post(
-    `http://localhost:8080/v1/api/login`,
+    `https://bansachweb.vercel.app/v1/api/login`,
     {
       username,
       password,
@@ -25,7 +25,7 @@ const profileUser = (access_token) => {
     Authorization: `Bearer ${access_token}`,
   };
   return axios.get(
-    "http://localhost:8080/v1/api/profile",
+    "https://bansachweb.vercel.app/v1/api/profile",
     {
       headers,
       // withCredentials: true,
@@ -45,7 +45,7 @@ const registerService = ({
   password,
 }) => {
   return axios.post(
-    `http://localhost:8080/v1/api/register`,
+    `https://bansachweb.vercel.app/v1/api/register`,
     {
       full_name,
       address,
