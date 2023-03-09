@@ -48,7 +48,7 @@ const registerService = ({
     `https://bansachweb.vercel.app/v1/api/register`,
     {
       full_name,
-      address,
+      address,  
       phone_number,
       email,
       password,
