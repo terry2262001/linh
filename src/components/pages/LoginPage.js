@@ -13,7 +13,7 @@ import Cookies from "universal-cookie";
 const LoginPage = () => {
   const { profile } = useSelector((state) => state.user);
   const cookies = new Cookies();
-  const naviagte = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const {
     control, //mac dinh
@@ -31,19 +31,22 @@ const LoginPage = () => {
     // resolver: yupResolver(schema),
   });
   const handleLogin = async (val) => {
-    const res = await loginService(val.username, val.password);
+    const res = await loginService(val.username, val.password).then((res) =>
+      res.json()
+    );
+    // .then((data) => console.log(data));
     if (res) {
       const profiles = await profileUser(res?.data?.access_token);
       cookies.set("jwt", res?.data?.access_token, { path: "/" });
       if (profiles) {
         dispatch(setProfile(profiles.data));
         toast.success("Login successfully!");
-        naviagte("/");
+        navigate("/");
       }
     }
   };
   useEffect(() => {
-    if (profile) naviagte("/");
+    if (profile) navigate("/");
   }, [profile]);
   return (
     <LayoutSign>
@@ -82,7 +85,7 @@ const LoginPage = () => {
           <Button
             className={"my-5"}
             bgColor="light-primary"
-            onClick={() => naviagte("/register")}
+            onClick={() => navigate("/register")}
           >
             Create new account
           </Button>

@@ -7,55 +7,31 @@ import axios from "axios";
 // axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "include";
 
 const loginService = (username, password) => {
-  return axios.post(
-    `https://bansachweb.vercel.app/v1/api/login`,
-    {
-      username,
-      password,
-    }
-    // {
-    //   withCredentials: "include",
-    // }
-  );
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/login`, {
+    method: "POST",
+    body: JSON.stringify({
+      username: "admin123",
+      password: "123456",
+    }),
+  });
 };
 
 const profileUser = (access_token) => {
-  const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${access_token}`,
-  };
-  return axios.get(
-    "https://bansachweb.vercel.app/v1/api/profile",
-    {
-      headers,
-      // withCredentials: true,
-    }
-    // {
-    //   withCredentials: "include",
-    // }
-  );
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/profile`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 };
 
-const registerService = ({
-  full_name,
-  address,
-  phone_number,
-  email,
-  username,
-  password,
-}) => {
-  return axios.post(
-    `https://bansachweb.vercel.app/v1/api/register`,
-    {
-      full_name,
-      address,  
-      phone_number,
-      email,
-      password,
-    }
-    // {
-    //   withCredentials: "include",
-    // }
-  );
+const registerService = ({ ...dataInfo }) => {
+  return fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/profile`, {
+    method: "POST",
+    body: JSON.stringify({
+      ...dataInfo,
+    }),
+  });
 };
 export { loginService, profileUser, registerService };

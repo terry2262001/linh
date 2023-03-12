@@ -2,13 +2,20 @@ import Button from "components/button/Button";
 import Input from "components/input/Input";
 import Label from "components/input/Label";
 import LayoutSign from "components/layout/LayoutSign";
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { registerService } from "services/userService";
+import { toast } from "react-toastify";
+import { setProfile } from "redux/slice/userSlice";
+import { profileUser, registerService } from "services/userService";
+import Cookies from "universal-cookie";
 
 const RegisterPage = () => {
-  const naviagte = useNavigate();
+  const { profile } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const cookies = new Cookies();
   const {
     control, //mac dinh
     handleSubmit, //sử dụng để lấy value
@@ -24,15 +31,26 @@ const RegisterPage = () => {
     // },
     // resolver: yupResolver(schema),
   });
-  const handleReigster = async (value) => {
-    const res = await registerService(value);
-    console.log("🚀 ~ file: RegisterPage.js:29 ~ handleReigster ~ res:", res);
+  const handleRegister = async (dataInfo) => {
+    const res = await registerService(dataInfo).then((res) => res.json());
+    if (res) {
+      const profiles = await profileUser(res?.data?.access_token);
+      cookies.set("jwt", res?.data?.access_token, { path: "/" });
+      if (profiles) {
+        dispatch(setProfile(profiles.data));
+        toast.success("Login successfully!");
+        navigate("/");
+      }
+    }
   };
+  useEffect(() => {
+    if (profile) navigate("/");
+  }, [profile]);
   return (
     <LayoutSign>
       <form
         className="w-full p-5 bg-white rounded shadow-xl"
-        onSubmit={handleSubmit(handleReigster)}
+        onSubmit={handleSubmit(handleRegister)}
       >
         <div className="mb-6">
           <Label className={"mb-2"} name="full_name">
@@ -95,7 +113,7 @@ const RegisterPage = () => {
           <Button
             className={"my-5"}
             bgColor="light-primary"
-            onClick={() => naviagte("/login")}
+            onClick={() => navigate("/login")}
           >
             You already have an account ?
           </Button>
