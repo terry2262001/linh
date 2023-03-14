@@ -1,3 +1,4 @@
+import AdminPage from "components/admin/AdminPage";
 import LayoutPage from "components/layout/LayoutPage";
 import BookDetailPage from "components/pages/BookDetailPage";
 import CartPage from "components/pages/CartPage";
@@ -26,6 +27,7 @@ const AppRoute = () => {
         <Route path="/cart" element={<CartPage></CartPage>}></Route>
         <Route path="/checkout" element={<CheckoutPage></CheckoutPage>}></Route>
       </Route>
+      <Route path="/admin" element={<AdminPage></AdminPage>}></Route>
     </Routes>
   );
 };

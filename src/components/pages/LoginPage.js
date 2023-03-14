@@ -18,10 +18,10 @@ const LoginPage = () => {
   const {
     control, //mac dinh
     handleSubmit, //sử dụng để lấy value
-    formState: { errors, isValid },
-    watch,
-    reset,
-    register,
+    // formState: { errors, isValid },
+    // watch,
+    // reset,
+    // register,
     //mac dinh
   } = useForm({
     mode: onchange,
