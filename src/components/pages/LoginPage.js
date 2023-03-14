@@ -2,7 +2,7 @@ import Button from "components/button/Button";
 import Input from "components/input/Input";
 import Label from "components/input/Label";
 import LayoutSign from "components/layout/LayoutSign";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { setProfile } from "redux/slice/userSlice";
 import { loginService, profileUser } from "services/userService";
 import Cookies from "universal-cookie";
 const LoginPage = () => {
+  const [data, setData] = useState();
   const { profile } = useSelector((state) => state.user);
   const cookies = new Cookies();
   const navigate = useNavigate();
@@ -31,13 +32,16 @@ const LoginPage = () => {
     // resolver: yupResolver(schema),
   });
   const handleLogin = async (val) => {
-    const res = await loginService(val.username, val.password).then((res) =>
-      res.json()
-    );
-    // .then((data) => console.log(data));
-    if (res) {
-      const profiles = await profileUser(res?.data?.access_token);
-      cookies.set("jwt", res?.data?.access_token, { path: "/" });
+    const res = await loginService(val.username, val.password)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          setData(data);
+        }
+      });
+    if (data) {
+      const profiles = await profileUser(data?.data?.access_token);
+      cookies.set("jwt", data?.data?.access_token, { path: "/" });
       if (profiles) {
         dispatch(setProfile(profiles.data));
         toast.success("Login successfully!");
