@@ -6,14 +6,24 @@ import axios from "axios";
 
 // axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "include";
 
-const loginService = (username, password) => {
-  return fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/login`, {
-    method: "POST",
+const loginService = async (username, password) => {
+  const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/v1/api/login`, {
+    method: "OPTIONS", // *GET, POST, PUT, DELETE, etc.
+    mode: "cors", // no-cors, *cors, same-origin
+    cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: "include", // include, *same-origin, omit
+    headers: {
+      "Content-Type": "application/json",
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: "follow", // manual, *follow, error
+    referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     body: JSON.stringify({
-      username: "admin123",
+      username: "long123",
       password: "123456",
     }),
   });
+  return res.json();
 };
 
 const profileUser = (access_token) => {

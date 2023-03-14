@@ -32,13 +32,11 @@ const LoginPage = () => {
     // resolver: yupResolver(schema),
   });
   const handleLogin = async (val) => {
-    const res = await loginService(val.username, val.password)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data) {
-          setData(data);
-        }
-      });
+    const res = loginService(val.username, val.password).then((data) => {
+      if (data) {
+        setData(data);
+      }
+    });
     if (data) {
       const profiles = await profileUser(data?.data?.access_token);
       cookies.set("jwt", data?.data?.access_token, { path: "/" });
