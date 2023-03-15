@@ -1,4 +1,8 @@
 import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "redux/slice/userSlice";
 import styled from "styled-components";
 const BookItemStyle = styled.div`
   .book-image {
@@ -39,27 +43,39 @@ const BookItemStyle = styled.div`
     }
   }
 `;
-const BookItem = ({ title, classNameImage }) => {
+const BookItem = ({
+  id,
+  title,
+  classNameImage,
+  imageURL,
+  price,
+  author,
+  handleAddToCart,
+  // isExistCart,
+}) => {
   return (
     <BookItemStyle className="flex flex-col">
       <div className={`book-image relative w-full h-[350px] ${classNameImage}`}>
         <img
-          src="https://source.unsplash.com/random"
+          src={imageURL}
           alt=""
           className="object-cover w-full h-full rounded"
         />
         <div className="absolute top-0 left-0 w-full h-full overlay bg-primary">
-          <div className="block absolute text-xs text-white uppercase -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 tracking-[0.2rem] content-overlay font-medium">
+          <div
+            className="block absolute text-xs text-white uppercase -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2 tracking-[0.2rem] content-overlay font-medium"
+            onClick={() => handleAddToCart()}
+          >
             read more
           </div>
         </div>
       </div>
       <div className="flex flex-col flex-1">
         <p className="text-lightGray text-xs mt-2 tracking-[0.2rem] uppercase">
-          John Strass
+          {author}
         </p>
         <h2 className="text-xl font-medium font-cormorant">{title}</h2>
-        <p className="mt-auto mb-3 text-xl font-cormorant">$38.00</p>
+        <p className="mt-auto mb-3 text-xl font-cormorant">${price}</p>
       </div>
     </BookItemStyle>
   );

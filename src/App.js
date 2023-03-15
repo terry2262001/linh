@@ -12,16 +12,16 @@ import axios from "axios";
 function App() {
   const cookies = new Cookies();
   const dispatch = useDispatch();
-  // const getProfile = async () => {
-  //   const cookie = cookies.get("jwt");
-  //   const profile = await profileUser(cookie).then((res) => res.json());
-  //   if (profile) {
-  //     dispatch(setProfile(profile.data));
-  //   }
-  // };
-  // useEffect(() => {
-  //   getProfile();
-  // }, []);
+  const getProfile = async () => {
+    const cookie = cookies.get("jwt");
+    const profile = await profileUser(cookie);
+    if (profile) {
+      dispatch(setProfile(profile.data));
+    }
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://upload-widget.cloudinary.com/global/all.js";

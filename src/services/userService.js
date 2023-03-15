@@ -2,11 +2,18 @@ import axios from "axios";
 
 // import axios from "../config/axios";
 
+const headers = {
+  "Content-Type": "application/json",
+};
 const loginService = (username, password) => {
-  return axios.post("https://book-api-beta.vercel.app/login", {
-    username: "long123",
-    password: "123456",
-  });
+  return axios.post(
+    "https://book-api-beta.vercel.app/login",
+    {
+      username,
+      password,
+    },
+    { headers }
+  );
 };
 
 const profileUser = (access_token) => {
@@ -14,14 +21,18 @@ const profileUser = (access_token) => {
     "Content-Type": "application/json",
     Authorization: `Bearer ${access_token}`,
   };
-  return axios.get(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
+  return axios.get(`${process.env.REACT_APP_BACKEND_URL}`, {
     headers,
   });
 };
 
 const registerService = ({ ...dataInfo }) => {
-  return axios.post(`${process.env.REACT_APP_BACKEND_URL}/register`, {
-    ...dataInfo,
-  });
+  return axios.post(
+    `${process.env.REACT_APP_BACKEND_URL}/register`,
+    {
+      ...dataInfo,
+    },
+    { headers }
+  );
 };
 export { loginService, profileUser, registerService };

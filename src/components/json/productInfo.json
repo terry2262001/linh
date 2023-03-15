@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Nhà giả kim",
+    "slug": "nha-gia-kim",
+    "desc": "",
+    "image_url": "https://res.cloudinary.com/dwkckmmr7/image/upload/v1670139068/foo/r5eeijqixcck07bv12ts.jpg",
+    "author_name": "Linh",
+    "published_date": "22/08/2021",
+    "price": 20000
+  },
+  {
+    "id": 2,
+    "name": "Lối sống tối giản người nhật",
+    "slug": "sach-2",
+    "desc": "",
+    "image_url": "https://res.cloudinary.com/dwkckmmr7/image/upload/v1670139225/foo/syp0dpbvqfmmwgjxuhmr.jpg",
+    "author_name": "Vu",
+    "published_date": "09/01/2021",
+    "price": 50000
+  },
+  {
+    "id": 3,
+    "name": "Đắc nhân tâm",
+    "slug": "sach-3",
+    "desc": "",
+    "image_url": "https://res.cloudinary.com/dwkckmmr7/image/upload/v1670040736/foo/or9bxc1cjeq09brdqjbt.jpg",
+    "author_name": "Tho",
+    "published_date": "22/06/2021",
+    "price": 30000
+  },
+  {
+    "id": 4,
+    "name": "Cây cam ngọt của tôi",
+    "slug": "sach-4",
+    "desc": "",
+    "image_url": "https://res.cloudinary.com/dwkckmmr7/image/upload/v1670995626/foo/xigsdjsrds2uxqcog86g.jpg",
+    "author_name": "Long",
+    "published_date": "22/08/2021",
+    "price": 20000
+  },
+  {
+    "id": 5,
+    "name": "Luật tâm thức",
+    "slug": "sach-5",
+    "desc": "",
+    "image_url": "https://res.cloudinary.com/dwkckmmr7/image/upload/v1669950153/foo/nxo2nr041h3p7qecarsi.jpg",
+    "author_name": "Phu",
+    "published_date": "22/01/2021",
+    "price": 50000
+  }
+]

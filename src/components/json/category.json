@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Tinh cam",
+    "status": 1
+  },
+  {
+    "id": 2,
+    "name": "Trinh tham",
+    "status": 1
+  },
+  {
+    "id": 3,
+    "name": "Tieu thuyet",
+    "status": 1
+  },
+  {
+    "id": 4,
+    "name": "Kinh di",
+    "status": 1
+  },
+  {
+    "id": 5,
+    "name": "Kien thuc",
+    "status": 1
+  }
+]

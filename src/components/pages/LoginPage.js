@@ -32,27 +32,16 @@ const LoginPage = () => {
     // resolver: yupResolver(schema),
   });
   const handleLogin = async (val) => {
-    const res = await axios
-      .post("https://book-api-beta.vercel.app/login", {
-        username: "long123",
-        password: "123456",
-      })
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-    // console.log("🚀 ~ file: LoginPage.js:35 ~ handleLogin ~ res:", res);
-    // if (res) {
-    //   const profiles = await profileUser(res?.data?.access_token);
-    //   cookies.set("jwt", res?.data?.access_token, { path: "/" });
-    //   if (profiles) {
-    //     dispatch(setProfile(profiles.data));
-    //     toast.success("Login successfully!");
-    //     navigate("/");
-    //   }
-    // }
+    const res = await loginService(val.username, val.password);
+    if (res) {
+      const profiles = await profileUser(res?.data?.data?.access_token);
+      cookies.set("jwt", res?.data?.data?.access_token, { path: "/" });
+      if (profiles) {
+        dispatch(setProfile(profiles.data));
+        toast.success("Login successfully!");
+        navigate("/");
+      }
+    }
   };
   useEffect(() => {
     if (profile) navigate("/");

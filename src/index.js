@@ -6,10 +6,12 @@ import store from "redux/store";
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import reportWebVitals from "./reportWebVitals";
-<script
+{
+  /* <script
   src="https://upload-widget.cloudinary.com/global/all.js"
   type="text/javascript"
-></script>;
+></script>; */
+}
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
