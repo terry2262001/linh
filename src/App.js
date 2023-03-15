@@ -8,6 +8,7 @@ import { useDispatch } from "react-redux";
 import Cookies from "universal-cookie";
 import { profileUser } from "services/userService";
 import { setProfile } from "redux/slice/userSlice";
+import axios from "axios";
 function App() {
   const cookies = new Cookies();
   const dispatch = useDispatch();

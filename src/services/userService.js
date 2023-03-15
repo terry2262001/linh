@@ -3,7 +3,7 @@ import axios from "axios";
 // import axios from "../config/axios";
 
 const loginService = (username, password) => {
-  return axios.post(`https://book-api-beta.vercel.app/login`, {
+  return axios.post("https://book-api-beta.vercel.app/login", {
     username: "long123",
     password: "123456",
   });
