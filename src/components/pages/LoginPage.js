@@ -11,7 +11,6 @@ import { setProfile } from "redux/slice/userSlice";
 import { loginService, profileUser } from "services/userService";
 import Cookies from "universal-cookie";
 const LoginPage = () => {
-  const [data, setData] = useState();
   const { profile } = useSelector((state) => state.user);
   const cookies = new Cookies();
   const navigate = useNavigate();
@@ -32,20 +31,17 @@ const LoginPage = () => {
     // resolver: yupResolver(schema),
   });
   const handleLogin = async (val) => {
-    const res = loginService(val.username, val.password).then((data) => {
-      if (data) {
-        setData(data);
-      }
-    });
-    if (data) {
-      const profiles = await profileUser(data?.data?.access_token);
-      cookies.set("jwt", data?.data?.access_token, { path: "/" });
-      if (profiles) {
-        dispatch(setProfile(profiles.data));
-        toast.success("Login successfully!");
-        navigate("/");
-      }
-    }
+    const res = await loginService(val.username, val.password);
+    console.log("🚀 ~ file: LoginPage.js:35 ~ handleLogin ~ res:", res);
+    // if (res) {
+    //   const profiles = await profileUser(res?.data?.access_token);
+    //   cookies.set("jwt", res?.data?.access_token, { path: "/" });
+    //   if (profiles) {
+    //     dispatch(setProfile(profiles.data));
+    //     toast.success("Login successfully!");
+    //     navigate("/");
+    //   }
+    // }
   };
   useEffect(() => {
     if (profile) navigate("/");

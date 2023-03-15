@@ -1,4 +1,3 @@
-import WidgetUpload from "components/cloudinary/WidgetUpload";
 import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
@@ -48,7 +47,6 @@ const AdminPage = () => {
           </>
         );
       })}
-      <WidgetUpload></WidgetUpload>
     </AdminPageStyle>
   );
 };

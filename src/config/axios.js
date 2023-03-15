@@ -3,9 +3,9 @@ import axios from "axios";
 // Set config defaults when creating the instance
 let store;
 //fix bug cannot access before init
-export const injectStore = (_store) => {
-  store = _store;
-};
+// export const injectStore = (_store) => {
+//   store = _store;
+// };
 const instance = axios.create({
   baseURL: process.env.REACT_APP_BACKEND_URL,
   withCredentials: true,
@@ -21,7 +21,7 @@ instance.interceptors.request.use(
   function (config) {
     // const reduxState = store.getState();
     // let headerToken = reduxState?.account?.userInfo?.access_token;
-    // if (headerToken)
+    // if ()
     //   // instance.defaults.headers.common["Authorization"] = `Bearer ${
     //   //   headerToken ?? ""
     //   // }`;
